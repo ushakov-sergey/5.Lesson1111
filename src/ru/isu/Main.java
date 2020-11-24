@@ -3,12 +3,12 @@ package ru.isu;
 import java.util.ArrayDeque;
 import java.util.Deque;
 import java.util.Scanner;
+import java.util.StringJoiner;
 
 public class Main {
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        StringBuilder stringBuilder = new StringBuilder();
         String input = scanner.nextLine();
         String[] split = input.split("/");
         Deque<String> deque = new ArrayDeque<>();
@@ -21,13 +21,11 @@ public class Main {
                 deque.addFirst(word);
             }
         }
-        for (String word :
-                deque) {
-            String element = deque.removeFirst();
-            stringBuilder.insert(0, element);
-            stringBuilder.insert(0, "/");
+        StringJoiner joiner = new StringJoiner("/");
+        while (!deque.isEmpty()) {
+            joiner.add(deque.removeLast());
         }
-        stringBuilder.deleteCharAt(0);
-        System.out.println(stringBuilder.toString());
+
+        System.out.println(joiner.toString());
     }
 }
