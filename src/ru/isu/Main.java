@@ -25,7 +25,7 @@ public class Main {
         while (!deque.isEmpty()) {
             joiner.add(deque.removeLast());
         }
-
+        scanner.close();
         System.out.println(joiner.toString());
     }
 }
